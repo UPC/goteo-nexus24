@@ -94,7 +94,8 @@ class DummyPaymentMethod extends AbstractPaymentMethod {
 
     public function purchase() {
         $this->simulating_gateway = true;
-        return new EmptyFailedResponse();
+        // return new EmptyFailedResponse();
+        return new EmptySuccessfulResponse();
     }
 
     public function completePurchase() {
