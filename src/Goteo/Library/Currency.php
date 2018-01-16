@@ -22,36 +22,45 @@ class Currency {
 
 
     const
-        DEFAULT_CURRENCY = 'EUR';  // @TODO: este valor debería venir de configuración Yaml
+        DEFAULT_CURRENCY = 'N24';  // @TODO: este valor debería venir de configuración Yaml
 
     static public $currencies = array(
 
-        'EUR' => array(
-            'id' => 'EUR',
-            'name' => 'Euro',
-            'html' => '€',
+        'N24' => array(
+            'id' => 'N24',
+            'name' => 'Nexus24',
+            'html' => '⋒',
             'thou' => '.',
             'dec'  => ',',
             'active' => 1
         ),
 
-        'USD' => array(
-            'id' => 'USD',
-            'name' => 'U.S. Dollar',
-            'html' => '$',
-            'thou' => ',',
-            'dec'  => '.',
-            'active' => 1
-        ),
+//        'EUR' => array(
+//            'id' => 'EUR',
+//            'name' => 'Euro',
+//            'html' => '€',
+//            'thou' => '.',
+//            'dec'  => ',',
+//            'active' => 1
+//        ),
 
-        'GBP' => array(
-            'id' => 'GBP',
-            'name' => 'British Pound',
-            'html' => '£',
-            'thou' => ',',
-            'dec'  => '.',
-            'active' => 1
-        ),
+//        'USD' => array(
+//            'id' => 'USD',
+//            'name' => 'U.S. Dollar',
+//            'html' => '$',
+//            'thou' => ',',
+//            'dec'  => '.',
+//            'active' => 1
+//        ),
+
+//        'GBP' => array(
+//            'id' => 'GBP',
+//            'name' => 'British Pound',
+//            'html' => '£',
+//            'thou' => ',',
+//            'dec'  => '.',
+//            'active' => 1
+//        ),
 
 
     );
