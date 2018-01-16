@@ -15,7 +15,6 @@ use Omnipay\Common\Message\ResponseInterface;
 
 use Goteo\Payment\Method\AbstractPaymentMethod;
 use Goteo\Library\Currency;
-use Goteo\Util\Omnipay\Message\EmptyFailedResponse;
 use Goteo\Util\Omnipay\Message\EmptySuccessfulResponse;
 use Goteo\Application\App;
 use Goteo\Application\AppEvents;
@@ -94,7 +93,7 @@ class DummyPaymentMethod extends AbstractPaymentMethod {
 
     public function purchase() {
         $this->simulating_gateway = true;
-        return new EmptyFailedResponse();
+        return new EmptySuccessfulResponse();
     }
 
     public function completePurchase() {
