@@ -163,7 +163,8 @@ class InvestController extends \Goteo\Core\Controller {
 
         if($login_required) {
             // A reward is required here
-            if(!$invest && empty($reward) && $custom_amount == 0) {
+//            if(!$invest && empty($reward) && $custom_amount == 0) {
+            if(!$invest && empty($reward)) {
                 Message::error(Text::get('invest-reward-first'));
                 return $this->redirect('/invest/' . $project_id);
             }
