@@ -87,10 +87,10 @@ class PoolController extends \Goteo\Core\Controller {
         if($login_required) {
 
             // A reward is required here
-            if($amount_original == 0 && !is_null($amount)) {
-                Message::error(Text::get('pool-amount-first'));
-                return $this->redirect('/pool');
-            }
+//            if($amount_original == 0 && !is_null($amount)) {
+//                Message::error(Text::get('pool-amount-first'));
+//                return $this->redirect('/pool');
+//            }
             // A login is required here
             if(!Session::isLogged()) {
 
