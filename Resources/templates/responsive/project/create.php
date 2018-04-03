@@ -33,31 +33,6 @@ $terms=$this->terms;
                     <label><?= $this->text('overview-field-subtitle') ?></label>
                     <input autocomplete="off" tabindex="0" class="form-control" name="subtitle" value="" type="text" required>
                 </div>
-                <div class="form-group col-sm-12" id="minimum-group">
-                    <div class="alert alert-success">
-                        <div id="default-msg" >
-                        <?= $this->text('project-create-minimum-alert') ?>
-                        </div>
-                        <div id="calculated-msg" >
-                        <?= $this->text('project-create-minimum-calculated-alert') ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label><?= $this->text('project-create-minimum-field') ?></label>
-                            <input tabindex="0" type="text" class="form-control minimum" name="minimum" id="minimum" value="" required>
-                        </div>
-                        <div class="col-sm-4">
-                            <button id="calculate-invest" type="submit" class="btn btn-block pink"><?= $this->text('project-create-minimum-calculate-button') ?></button>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="investors spacer-20" id="investors" >
-                                <i class="fa fa-users"></i>
-                                <span id="investors-number" ></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div tabindex="0" class="form-group col-sm-12" id="calendar-group" style="outline:none">
                     <label><?= $this->text('project-create-publishing-date-field') ?></label>
                     <div id="calendar">
