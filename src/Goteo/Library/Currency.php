@@ -29,7 +29,7 @@ class Currency {
         'N24' => array(
             'id' => 'N24',
             'name' => 'Nexus24',
-            'html' => '⋒',
+            'html' => '☝️',
             'thou' => '.',
             'dec'  => ',',
             'active' => 1
