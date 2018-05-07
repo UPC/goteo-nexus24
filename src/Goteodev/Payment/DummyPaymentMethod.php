@@ -10,7 +10,6 @@
 
 namespace Goteodev\Payment;
 
-use Symfony\Component\HttpFoundation\Response;
 use Omnipay\Common\Message\ResponseInterface;
 
 use Goteo\Payment\Method\AbstractPaymentMethod;
@@ -47,48 +46,8 @@ class DummyPaymentMethod extends AbstractPaymentMethod {
     public function getDefaultHttpResponse(ResponseInterface $response) {
         if(!$this->simulating_gateway) return null;
 
-        // Let's obtain the gateway and the
-        $output = '<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Dummy Payment Gateway</title>
-        <style>
-        body {background:#f0f0f0;margin:20px}
-        .center {margin: auto; width: 500px; border:5px solid #B5DADC; padding: 20px; background:#fff;}
-        form input {padding:15px;font-size:1.5em}
-        form.ok {float:left}
-        form.ok submit{float:left}
-        form.ok input {color:#090}
-        form.ko {float:right}
-        form.ko input {color:#b00}
-        .clear {clear:both}
-        </style>
-    </head>
-    <body>
-        <div class="center">
-        <h1>Dummy payment gateway</h1>
-        <h3>This is a test gateway for testing. It does... nothing!</h3>
-        <h4>%3$s</h4>
-            <p>Choose what kind of payment do you wish:</p>
-            <form class="ok" action="%1$s" method="post">
-                <input type="hidden" name="number" value="4242424242424242">
-                <input type="submit" value="Successful Payment" />
-            </form>
-            <form class="ko" action="%2$s" method="post">
-                <input type="hidden" name="number" value="4111111111111111">
-                <input type="submit" value="Failed Payment" />
-            </form>
-            <div class="clear"></div>
-        </div>
-    </body>
-</html>';
-        return new Response(sprintf(
-                    $output,
-                    htmlentities($this->getCompleteUrl(), ENT_QUOTES, 'UTF-8', false),
-                    htmlentities($this->getCompleteUrl(), ENT_QUOTES, 'UTF-8', false),
-                    $this->getInvest()->amount . ' ' .Currency::getDefault('html')
-                ));
+        $this->completePurchase();
+        return null;
     }
 
     public function purchase() {
@@ -97,26 +56,23 @@ class DummyPaymentMethod extends AbstractPaymentMethod {
     }
 
     public function completePurchase() {
-
-        // Let's obtain the gateway and the
+        // See Omnipay\Dummy\Gateway for details about card number
+        $card = 4242424242424242;
         $gateway = $this->getGateway();
         $gateway->setCurrency(Currency::getDefault('id'));
-        $request = $this->getRequest();
         $invest = $this->getInvest();
         $payment = $gateway->purchase([
                     'amount' => (float) $this->getInvest()->amount,
                     'card' => [
-                        'number' => $request->request->get('number'),
+                        'number' => $card,
                         'expiryMonth' => '12',
-                        'expiryYear' => '2017',
+                        'expiryYear' => '2038',
                         ],
                     'description' => $this->getInvestDescription(),
                     'returnUrl' => $this->getCompleteUrl(),
                     'cancelUrl' => $this->getCompleteUrl(),
         ]);
-        // set the dummy card as payment detail data
-        $invest->setPayment($request->request->get('number'));
-
+        $invest->setPayment($card);
         return $payment->send();
     }
 
