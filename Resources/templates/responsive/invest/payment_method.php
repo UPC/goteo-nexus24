@@ -30,17 +30,7 @@ $this->section('main-content');
                 <input type="hidden" name="amount" value="<?= $this->amount_original . $this->currency ?>">
 
                 <div class="row pay-methods">
-                <?php foreach($this->pay_methods as $method => $pay): ?>
-                    <div class="col-xxs-6 col-tn-6 col-xs-3 pay-method<?= $pay->isActive() ? '' : ' disabled' ?>">
-                        <label class="label-method <?= $pay->isActive($this->amount) ? '' : 'label-disabled' ?> <?= $this->default_method == $method ? ' method-choosen' : '' ?>" for="<?= $method ?>-method">
-                            <input class="method" name="method" id="<?= $method ?>-method"<?= $this->default_method == $method ? ' checked' : '' ?> <?= $pay->isActive($this->amount) ? '' : ' disabled="disabled"' ?> value="<?= $method ?>" type="radio">
-                            <span class="method-text">
-                            <?= $pay->getName() ?>
-                            </span>
-                            <img class="img-responsive img-method" alt="<?= $method ?>" title="<?= $pay->getDesc() ?>" src="<?= $pay->getIcon() ?>">
-                        </label>
-                    </div>
-                <?php endforeach ?>
+                <input name="method" id="dummy-method" value="dummy" type="hidden">
                 </div>
 
                 <?php if($this->skip_login): ?>
