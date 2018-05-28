@@ -1,14 +1,18 @@
 <?php
 /*
- * This file is part of the Goteo Package.
+ * This file was originally part of the Goteo Package, as DummyPaymentMethod.
  *
  * (c) Platoniq y Fundación Goteo <fundacion@goteo.org>
+ *
+ * Currently is part of Nexus24 plugin:
+ *
+ * (c) 2018 UPC BarcelonaTech
  *
  * For the full copyright and license information, please view the README.md
  * and LICENSE files that was distributed with this source code.
  */
 
-namespace Goteodev\Payment;
+namespace Goteo\Payment\Method;
 
 use Omnipay\Common\Message\ResponseInterface;
 
@@ -19,28 +23,23 @@ use Goteo\Application\App;
 use Goteo\Application\AppEvents;
 use Goteo\Application\Event\FilterInvestEvent;
 
-/**
- * This class is just an example and must NOT be used in production
- * Creates a Payment Method that does nothing!
- * Does not use Omnipay
- */
-class DummyPaymentMethod extends AbstractPaymentMethod {
+class Nexus24PaymentMethod extends AbstractPaymentMethod {
     private $simulating_gateway = false;
 
     public function getGatewayName() {
-        return 'Dummy';
+        return 'Nexus24';
     }
 
     public function getName() {
-        return 'Dummy Payment';
+        return "M'hi implico!";
     }
 
     public function getDesc() {
-        return 'Not really a payment, just for testing';
+        return "Passarel·la de pagament de m'hi implico!";
     }
 
     public function getIcon() {
-        return SRC_URL . '/assets/img/pay/cash.png';
+        return SRC_URL . '/assets/img/pay/nexus24.png';
     }
 
     public function getDefaultHttpResponse(ResponseInterface $response) {
