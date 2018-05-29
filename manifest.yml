@@ -3,3 +3,6 @@
 
 name: Nexus24
 version: 1.0
+
+assets:
+    Resources/assets/img/pay/nexus24.png: assets/img/pay/nexus24.png
