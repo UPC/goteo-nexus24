@@ -38,7 +38,7 @@ $this->section('main-content');
                 <?php endif ?>
 
 
-                <div class="form-group">
+                <div class="form-group" style="display:none">
                     <div class="checkbox">
                         <label>
                             <input class="no-margin-checkbox big-checkbox" type="checkbox" name="anonymous" id="anonymous" value="1"<?= $this->skip_login && !$this->name ? ' checked="checked"' : ''?>>
