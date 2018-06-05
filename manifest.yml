@@ -8,3 +8,5 @@ assets:
     Resources/assets/img/pay/nexus24.png: assets/img/pay/nexus24.png
     Resources/Logo_Nexus24.ico: favicon.ico
     Resources/assets/img/Marca_Nexus24.svg: assets/img/goteo.svg
+    Resources/Logo_Nexus24.png: myicon.png
+    Resources/Marca_Nexus24.png: goteo_logo.png
