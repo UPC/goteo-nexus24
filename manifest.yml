@@ -7,3 +7,4 @@ version: 1.0
 assets:
     Resources/assets/img/pay/nexus24.png: assets/img/pay/nexus24.png
     Resources/Logo_Nexus24.ico: favicon.ico
+    Resources/assets/img/Marca_Nexus24.svg: assets/img/goteo.svg
