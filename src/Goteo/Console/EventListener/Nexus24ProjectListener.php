@@ -23,7 +23,7 @@ use Goteo\Model\Project;
 
 //
 
-class ConsoleProjectListener extends AbstractListener {
+class Nexus24ProjectListener extends AbstractListener {
 
 	private function logFeedEntry(Feed $log, Project $project) {
 		if ($log->unique_issue) {

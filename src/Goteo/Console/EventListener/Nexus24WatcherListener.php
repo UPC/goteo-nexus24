@@ -27,7 +27,7 @@ use Goteo\Model\Event;
 
 //
 
-class ConsoleWatcherListener extends AbstractListener {
+class Nexus24WatcherListener extends AbstractListener {
 
 	private function logFeedEntry(Feed $log, Project $project) {
 		if ($log->unique_issue) {
