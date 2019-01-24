@@ -10,20 +10,19 @@
 
 namespace Goteo\Console\EventListener;
 
-use Goteo\Application\EventListener\AbstractListener;
-use Goteo\Console\ConsoleEvents;
+use Goteo\Console\EventListener\ConsoleProjectListener;
 use Goteo\Console\Event\FilterProjectEvent;
-use Goteo\Console\UsersSend;
+// use Goteo\Console\UsersSend;
 use Goteo\Library\Currency;
 use Goteo\Library\Feed;
 use Goteo\Library\FeedBody;
 
-use Goteo\Model\Invest;
+// use Goteo\Model\Invest;
 use Goteo\Model\Project;
 
 //
 
-class Nexus24ProjectListener extends AbstractListener {
+class Nexus24ProjectListener extends ConsoleProjectListener {
 
 	private function logFeedEntry(Feed $log, Project $project) {
 		if ($log->unique_issue) {
@@ -82,8 +81,9 @@ class Nexus24ProjectListener extends AbstractListener {
 
 		$this->logFeedEntry($log, $project);
 		// Email de proyecto fallido al autor, inversores y destinatarios de recompensa
-		UsersSend::toOwner('fail', $project);
-		UsersSend::toInvestors('fail', $project, [Invest::STATUS_CHARGED]);
+		// DO NOT SEND MAIL
+		// UsersSend::toOwner('fail', $project);
+		// UsersSend::toInvestors('fail', $project, [Invest::STATUS_CHARGED]);
 		// Gift reward, currently not active
 		// UsersSend::toFriends('fail', $project);
 
@@ -153,9 +153,10 @@ class Nexus24ProjectListener extends AbstractListener {
 		$log->doPublic('projects');
 
 		$this->logFeedEntry($log, $project);
+		// DO NOT SEND MAIL
 		// Email de proyecto finaliza su única ronda al autor y a los inversores
-		UsersSend::toOwner('unique_pass', $project);
-		UsersSend::toInvestors('unique_pass', $project);
+		// UsersSend::toOwner('unique_pass', $project);
+		// UsersSend::toInvestors('unique_pass', $project);
 
 	}
 
@@ -214,9 +215,10 @@ class Nexus24ProjectListener extends AbstractListener {
 		$log->doPublic('projects');
 
 		$this->logFeedEntry($log, $project);
+		// DO NOT SEND MAIL
 		// Email de proyecto pasa a segunda ronda al autor y a los inversores
-		UsersSend::toOwner('r1_pass', $project);
-		UsersSend::toInvestors('r1_pass', $project);
+		// UsersSend::toOwner('r1_pass', $project);
+		// UsersSend::toInvestors('r1_pass', $project);
 
 	}
 
@@ -276,18 +278,10 @@ class Nexus24ProjectListener extends AbstractListener {
 		$log->doPublic('projects');
 
 		$this->logFeedEntry($log, $project);
+		// DO NOT SEND MAIL
 		//Email de proyecto final segunda ronda al autor y a los inversores
-		UsersSend::toOwner('r2_pass', $project);
-		UsersSend::toInvestors('r2_pass', $project);
+		// UsersSend::toOwner('r2_pass', $project);
+		// UsersSend::toInvestors('r2_pass', $project);
 
-	}
-
-	public static function getSubscribedEvents() {
-		return array(
-			ConsoleEvents::PROJECT_FAILED    => 'onProjectFailed',
-			ConsoleEvents::PROJECT_ONE_ROUND => 'onProjectOneRound',
-			ConsoleEvents::PROJECT_ROUND1    => 'onProjectRound1',
-			ConsoleEvents::PROJECT_ROUND2    => 'onProjectRound2',
-		);
 	}
 }
